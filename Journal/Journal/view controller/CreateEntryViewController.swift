@@ -17,15 +17,15 @@ class CreateEntryViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func save(_ sender: UIButton) {
+    @IBAction func save(_ sender: UIBarButtonItem) {
 
         guard let title = titleTextField.text,
-            !entryTitle.isEmpty else { return }
+            !title.isEmpty else { return }
 
         guard let body = bodyTextField.text,
-            !entryDetail.isEmpty else { return }
+            !body.isEmpty else { return }
 
-        Entry(title: title, bodyText: body, context: context)
+        Entry(title: title, bodyText: body)
 
         do {
             try CoreDataStack.shared.mainContext.save()
@@ -37,7 +37,7 @@ class CreateEntryViewController: UIViewController {
 
         navigationController?.dismiss(animated: true, completion: nil)
     }
-    @IBAction func cancel(_ sender: UIButton) {
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
 

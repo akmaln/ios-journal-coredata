@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="75" id="Bdj-FE-Vuu">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="75" id="Bdj-FE-Vuu" customClass="EntryTableViewCell" customModule="Journal" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bdj-FE-Vuu" id="o0O-Do-PCm">
@@ -58,6 +58,11 @@
                                         <constraint firstItem="rH6-K4-Ed8" firstAttribute="leading" secondItem="o0O-Do-PCm" secondAttribute="leadingMargin" id="jtT-Nd-9YY"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bodyTextLabel" destination="61q-dv-niY" id="y59-nv-E1g"/>
+                                    <outlet property="dateLabel" destination="uvQ-4K-eky" id="Kea-zZ-AjA"/>
+                                    <outlet property="titleLabel" destination="jZR-B6-tlM" id="pHp-bP-IAg"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -124,9 +129,21 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="xvP-mh-QKF">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cMY-d0-8zF"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ARP-WL-12K"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cMY-d0-8zF">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="nB3-FM-MSG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ARP-WL-12K">
+                            <connections>
+                                <action selector="save:" destination="BYZ-38-t0r" id="3rN-o3-HyD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bodyTextField" destination="U9k-ns-dmH" id="vtN-Tn-nU2"/>
+                        <outlet property="titleTextField" destination="IRp-If-iJ4" id="DS8-II-n5m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
