@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4072F02624747B9F00CAB20F /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4072F02524747B9F00CAB20F /* EntryDetailViewController.swift */; };
 		40986CAF24734616001DBDFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40986CAE24734616001DBDFE /* AppDelegate.swift */; };
 		40986CB124734616001DBDFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40986CB024734616001DBDFE /* SceneDelegate.swift */; };
 		40986CB324734616001DBDFE /* CreateEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40986CB224734616001DBDFE /* CreateEntryViewController.swift */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4072F02424746FF000CAB20F /* Journal 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Journal 2.xcdatamodel"; sourceTree = "<group>"; };
+		4072F02524747B9F00CAB20F /* EntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
 		40986CAB24734616001DBDFE /* Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40986CAE24734616001DBDFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40986CB024734616001DBDFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 			children = (
 				40986CB224734616001DBDFE /* CreateEntryViewController.swift */,
 				40986CC624734853001DBDFE /* EntriesTableViewController.swift */,
+				4072F02524747B9F00CAB20F /* EntryDetailViewController.swift */,
 			);
 			path = "view controller";
 			sourceTree = "<group>";
@@ -192,6 +196,7 @@
 				40986CAF24734616001DBDFE /* AppDelegate.swift in Sources */,
 				40986CB124734616001DBDFE /* SceneDelegate.swift in Sources */,
 				40986CCD247348E2001DBDFE /* Entry+Convenience.swift in Sources */,
+				4072F02624747B9F00CAB20F /* EntryDetailViewController.swift in Sources */,
 				40986CD0247348F8001DBDFE /* Journal.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,9 +398,10 @@
 		40986CCE247348F8001DBDFE /* Journal.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				4072F02424746FF000CAB20F /* Journal 2.xcdatamodel */,
 				40986CCF247348F8001DBDFE /* Journal.xcdatamodel */,
 			);
-			currentVersion = 40986CCF247348F8001DBDFE /* Journal.xcdatamodel */;
+			currentVersion = 4072F02424746FF000CAB20F /* Journal 2.xcdatamodel */;
 			path = Journal.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

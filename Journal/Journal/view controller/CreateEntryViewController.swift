@@ -12,6 +12,7 @@ class CreateEntryViewController: UIViewController {
 
     @IBOutlet weak var bodyTextField: UITextView!
     @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var moodControl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -24,11 +25,15 @@ class CreateEntryViewController: UIViewController {
 
         guard let body = bodyTextField.text,
             !body.isEmpty else { return }
+        
+        let moodIndex = moodControl.selectedSegmentIndex
+        let mood = Mood.allCases[moodIndex]
 
-        Entry(title: title, bodyText: body)
+        Entry(title: title, bodyText: body, mood: mood)
 
         do {
             try CoreDataStack.shared.mainContext.save()
+            navigationController?.dismiss(animated: true, completion: nil)
 
         } catch {
             NSLog("error saving managed object context: \(error)")
