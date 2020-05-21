@@ -16,6 +16,7 @@ class EntryDetailViewController: UIViewController {
     
     var entry: Entry?
     var wasEdited: Bool = false
+    var entryController: EntryController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ class EntryDetailViewController: UIViewController {
             
             do {
                 try CoreDataStack.shared.mainContext.save()
+                entryController?.sendEntryToServer(entry: entry)
                 navigationItem.hidesBackButton = false
             } catch {
                 NSLog("error saving managed object context: \(error)")

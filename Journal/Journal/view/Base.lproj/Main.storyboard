@@ -75,7 +75,7 @@
                     <navigationItem key="navigationItem" id="ieK-Gz-qZQ">
                         <barButtonItem key="rightBarButtonItem" image="plus.circle" catalog="system" id="PEb-WP-xhD">
                             <connections>
-                                <segue destination="fym-NV-zxa" kind="presentation" modalPresentationStyle="fullScreen" id="U5U-Em-hfD"/>
+                                <segue destination="fym-NV-zxa" kind="presentation" identifier="AddJournalEntryModalSegue" modalPresentationStyle="fullScreen" id="U5U-Em-hfD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

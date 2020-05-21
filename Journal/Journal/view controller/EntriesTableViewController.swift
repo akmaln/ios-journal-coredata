@@ -28,6 +28,8 @@ class EntriesTableViewController: UITableViewController {
         }
         return frc
     }()
+    
+    var entryController = EntryController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,17 +66,21 @@ class EntriesTableViewController: UITableViewController {
            if editingStyle == .delete {
                // Delete the row from the data source
                let entry = fetchedResultsController.object(at: indexPath)
-               let context = CoreDataStack.shared.mainContext
-               context.delete(entry)
-               do {
-                   try context.save()
-                   tableView.reloadData()
-               } catch {
-                   context.reset()
-                   NSLog("error saving managed object context (delete entry): \(error)")
-               }
-           }
-       }
+               entryController.deleteEntryFromServer(entry) { result in
+                guard let _ = try? result.get() else {
+                   return
+                }
+                let context = CoreDataStack.shared.mainContext
+                context.delete(entry)
+                do {
+                    try context.save()
+                } catch {
+                    context.reset()
+                    NSLog("error saving managed object context (delete entry): \(error)")
+                }
+            }
+        }
+    }
 
     // MARK: - Navigation
 
@@ -82,12 +88,18 @@ class EntriesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        
         if segue.identifier == "EntryDetailShowSegue" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let detailVC = segue.destination as! EntryDetailViewController
             let entry = fetchedResultsController.object(at: indexPath)
 
             detailVC.entry = entry
+        } else if segue.identifier == "AddJournalEntryModalSegue" {
+            if let navC = segue.destination as? UINavigationController,
+                let createEntryVC = navC.viewControllers.first as? CreateEntryViewController {
+                createEntryVC.entryController = entryController
+            }
         }
     }
     
