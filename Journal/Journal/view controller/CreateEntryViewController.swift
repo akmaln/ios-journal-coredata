@@ -43,8 +43,6 @@ class CreateEntryViewController: UIViewController {
             NSLog("error saving managed object context: \(error)")
             return
         }
-
-        navigationController?.dismiss(animated: true, completion: nil)
     }
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)

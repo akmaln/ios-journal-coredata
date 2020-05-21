@@ -21,7 +21,7 @@ class EntryDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.setRightBarButton(editButtonItem, animated: false)
+        navigationItem.rightBarButtonItem = editButtonItem
         
         updateViews()
     }
@@ -36,11 +36,10 @@ class EntryDetailViewController: UIViewController {
             entry.bodyText = bodyTextView.text
             let moodIndex = moodController.selectedSegmentIndex
             entry.mood = Mood.allCases[moodIndex].rawValue
-            
+            entryController?.sendEntryToServer(entry: entry)
+           
             do {
                 try CoreDataStack.shared.mainContext.save()
-                entryController?.sendEntryToServer(entry: entry)
-                navigationItem.hidesBackButton = false
             } catch {
                 NSLog("error saving managed object context: \(error)")
             }

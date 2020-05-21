@@ -70,13 +70,15 @@ class EntriesTableViewController: UITableViewController {
                 guard let _ = try? result.get() else {
                    return
                 }
-                let context = CoreDataStack.shared.mainContext
-                context.delete(entry)
-                do {
-                    try context.save()
-                } catch {
-                    context.reset()
-                    NSLog("error saving managed object context (delete entry): \(error)")
+                DispatchQueue.main.async {
+                    let context = CoreDataStack.shared.mainContext
+                    context.delete(entry)
+                    do {
+                        try context.save()
+                    } catch {
+                        context.reset()
+                        NSLog("error saving managed object context (delete entry): \(error)")
+                    }
                 }
             }
         }
@@ -93,9 +95,9 @@ class EntriesTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let detailVC = segue.destination as! EntryDetailViewController
             let entry = fetchedResultsController.object(at: indexPath)
-
             detailVC.entry = entry
-        } else if segue.identifier == "AddJournalEntryModalSegue" {
+        }
+        if segue.identifier == "AddJournalEntryModalSegue" {
             if let navC = segue.destination as? UINavigationController,
                 let createEntryVC = navC.viewControllers.first as? CreateEntryViewController {
                 createEntryVC.entryController = entryController
